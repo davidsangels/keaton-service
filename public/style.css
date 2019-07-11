@@ -362,3 +362,57 @@ main {
   margin: 10px;
   margin-top: 25px;
 }
+
+
+
+
+
+
+
+
+.guest-container {
+  position: absolute !important;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px !important;
+  width: 325px;
+  height: 350px;
+  text-align: left !important;
+  margin-bottom: 16px !important;
+  box-sizing: border-box !important;
+  z-index: 2 !important;
+  left: 0px !important;
+  background: rgb(255, 255, 255) !important;
+  border-radius: 3px !important;
+  padding: 0px 16px !important;
+  border: solid;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+.adult-container {
+  color: black;
+  margin-top: 15px;
+  display: inline-block;
+}
+
+.increment-container {
+  float: right;
+  margin-left: 100px;
+}
+
+.increment-button {
+  height: var(--size-flat-button-size-small, 32px) !important;
+    width: var(--size-flat-button-size-small, 32px) !important;
+    box-shadow: var(--shadow-button-level0-box-shadow, none) !important;
+}
+
+
+.button-content {
+  color: #008489 !important;
+  font-size: var(--size-flat-button-icon-size-small, 16px) !important;
+}
+
+.guest-counter {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 0px 0px 10px 0px;
+}

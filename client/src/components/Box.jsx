@@ -2,6 +2,7 @@ import React from "react";
 import Calendar from './CalendarExample.jsx';
 import SecondCalendar from './SecondCalendar.jsx';
 import dateFns from "date-fns";
+import Guest from './Guest.jsx';
 
 class Box extends React.Component {
   constructor() {
@@ -15,6 +16,7 @@ class Box extends React.Component {
     this.onCheckIn = this.onCheckIn.bind(this);
     this.firstDateSelection = this.firstDateSelection.bind(this);
     this.secondDateSelection = this.secondDateSelection.bind(this);
+    this.onGuestSelectionNoDates = this.onGuestSelectionNoDates.bind(this);
 
   }
 
@@ -66,6 +68,12 @@ class Box extends React.Component {
     });
   }
 
+  onGuestSelectionNoDates() {
+    this.setState({
+      view: 'guestSelectionNoDates'
+    })
+  }
+
 
   render() {
     const { price, serviceFee, reviewScore, maxGuests, maxAdults, maxChildren, maxInfants, minBooking, maxBooking } = this.state;
@@ -99,7 +107,7 @@ class Box extends React.Component {
           </div>
 
           <div className='guests-text'>Guests</div>
-          <div className='guests-display-wrapper'>
+          <div className='guests-display-wrapper' onClick={this.onGuestSelectionNoDates}>
             <div className='guests-display-text'>
               1 guest
             </div>
@@ -201,6 +209,37 @@ class Box extends React.Component {
             </button>
           </div>
 
+        </div>
+      )
+    } else if (this.state.view === 'guestSelectionNoDates') {
+      return (
+        <div className='box'>
+          <div className='price'>
+            <span style={{fontSize:'25px'}}><b>${price}</b></span> per night
+          </div>
+
+
+          <div className='reviews'>
+            *****
+          </div>
+
+
+          <div className='datesText'>Dates</div>
+          <div className='date-display-wrapper'>
+            <div className='date-checkin-wrapper' onClick={this.onCheckIn}>
+              <div className='date-checkin-text'>Check In</div>
+            </div>
+            <div className='date-arrow-wrapper'>
+              <div className='date-arrow-text'>-->
+              </div>
+            </div>
+            <div className='date-checkout-wrapper'>
+              <div className='date-checkout-text'>
+                Check Out
+              </div>
+            </div>
+          </div>
+          <Guest />
         </div>
       )
     }
