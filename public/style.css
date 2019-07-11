@@ -228,3 +228,34 @@ main {
   flex-basis: calc(100%/7);
   width: calc(100%/7);
 }
+
+/* Box */
+
+.box {
+  display: block;
+  border-style: solid;
+  height: 350px;
+  width: 400px;
+
+}
+
+.box .price {
+  margin-top: 10px;
+  margin-left: 15px;
+  color: rgb(72, 72, 72);
+}
+
+.box .reviews {
+  /* background-image: url('reviews.png'); */
+  margin-left: 20px;
+  margin-right: 20px;
+  border-bottom: 1px solid;
+  border-color: rgb(72, 72, 72);
+}
+
+.box .line {
+  border-bottom: 1px solid;
+  border-color: rgb(72, 72, 72);
+  margin-left: 20px;
+  margin-right: 20px;
+}
