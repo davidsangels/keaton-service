@@ -18,6 +18,7 @@ class SecondCalendar extends React.Component {
     this.nextMonth = this.nextMonth.bind(this);
     this.prevMonth = this.prevMonth.bind(this);
     this.findNextBooking = this.findNextBooking.bind(this);
+    this.getServerData = this.getServerData.bind(this);
   }
 
   renderHeader() {
@@ -118,10 +119,10 @@ class SecondCalendar extends React.Component {
   }
 
   onDateClick(day) {
-    console.log(day);
     this.setState({
       selectedDate: day
     });
+    this.props.secondDateSelection(day);
   };
 
   nextMonth() {
@@ -160,7 +161,31 @@ class SecondCalendar extends React.Component {
     }
   }
 
+  getServerData() {
+    axios.get('/bookings')
+    .then((response) => {
+      let { price, serviceFee, reviewScore, reviewAmount, maxGuests, maxAdults, maxChildren, maxInfants, minBooking, maxBooking, reservations } = response.data;
+
+      const parsedReservations = JSON.parse(reservations);
+
+      this.setState({
+        price,
+        serviceFee,
+        reviewScore,
+        reviewAmount,
+        maxGuests,
+        maxAdults,
+        maxChildren,
+        maxInfants,
+        minBooking,
+        maxBooking,
+        takenDates: parsedReservations,
+      })
+    })
+  }
+
   componentDidMount() {
+    this.getServerData();
     this.findNextBooking();
   }
 

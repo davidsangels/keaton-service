@@ -284,6 +284,7 @@ main {
 
 .box .date-arrow-wrapper {
   display: inline-block;
+  margin-left: 10px;
 }
 
 .box .date-checkout-wrapper {
