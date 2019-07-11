@@ -259,3 +259,51 @@ main {
   margin-left: 20px;
   margin-right: 20px;
 }
+
+.box .datesText {
+  margin-left: 20px;
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+.box .date-display-wrapper {
+  margin-left: 15px;
+  margin-right: 15px;
+  border: 1px solid;
+  padding: 10px 10px 10px 10px;
+
+}
+.box .date-checkin-wrapper {
+  width: 40%;
+  display: inline-block;
+}
+
+.box .date-checkin-text {
+  margin-left: 15px;
+}
+
+.box .date-arrow-wrapper {
+  display: inline-block;
+}
+
+.box .date-checkout-wrapper {
+  width: 40%;
+  display: inline-block;
+}
+
+.box .date-checkout-text {
+  margin-left: 55px;
+}
+
+.box .guests-text {
+  margin-left: 20px;
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+.box .guests-display-wrapper {
+  margin-left: 15px;
+  margin-right: 15px;
+  border: 1px solid;
+  padding: 10px 10px 10px 10px;
+}
