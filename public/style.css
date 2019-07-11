@@ -394,9 +394,9 @@ main {
   display: inline-block;
 }
 
-.increment-container {
+.adult-increment-container {
   float: right;
-  margin-left: 100px;
+  margin-left: 120px;
 }
 
 .increment-button {
@@ -414,5 +414,32 @@ main {
 .guest-counter {
   margin-left: 10px;
   margin-right: 10px;
-  padding: 0px 0px 10px 0px;
+  margin-bottom: 10px;
+  display:inline-block;
+}
+
+.children-container {
+  color: black;
+  margin-top: 18px;
+  display: inline-block;
+}
+
+.infants-container {
+  color: black;
+  margin-top: 23px;
+  display: inline-block;
+}
+
+.children-increment-container {
+  float: right;
+  margin-left: 101.5px;
+}
+
+.infant-increment-container {
+  float: right;
+  margin-left: 111px;
+}
+
+.guest-subtext {
+  font-size: 12px;
 }
