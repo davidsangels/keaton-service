@@ -13,6 +13,7 @@ class Calendar extends React.Component {
     this.onDateClick = this.onDateClick.bind(this);
     this.nextMonth = this.nextMonth.bind(this);
     this.prevMonth = this.prevMonth.bind(this);
+    this.getServerData = this.getServerData.bind(this);
   }
 
   renderHeader() {
@@ -22,11 +23,11 @@ class Calendar extends React.Component {
       <div className="header row flex-middle">
         <div className="col col-start">
           <div className="icon" onClick={this.prevMonth}>
-            -->
+            chevron_left
           </div>
         </div>
         <div className="col col-center">
-          <span>{dateFns.format(this.state.currentMonth, dateFormat)} asdfasdf</span>
+          <span>{dateFns.format(this.state.currentMonth, dateFormat)}</span>
         </div>
         <div className="col col-end" onClick={this.nextMonth}>
           <div className="icon">chevron_right</div>
@@ -122,6 +123,34 @@ class Calendar extends React.Component {
       currentMonth: dateFns.subMonths(this.state.currentMonth, 1)
     });
   };
+
+  getServerData() {
+    axios.get('/bookings')
+    .then((response) => {
+      let { price, serviceFee, reviewScore, reviewAmount, maxGuests, maxAdults, maxChildren, maxInfants, minBooking, maxBooking, reservations } = response.data;
+
+      const parsedReservations = JSON.parse(reservations);
+
+      this.setState({
+        price,
+        serviceFee,
+        reviewScore,
+        reviewAmount,
+        maxGuests,
+        maxAdults,
+        maxChildren,
+        maxInfants,
+        minBooking,
+        maxBooking,
+        takenDates: parsedReservations,
+      })
+    })
+  }
+
+  componentDidMount() {
+    this.getServerData();
+
+  }
 
   render() {
     return (

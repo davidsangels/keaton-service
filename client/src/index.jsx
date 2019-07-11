@@ -5,4 +5,4 @@ import SecondCalendar from './components/SecondCalendar.jsx';
 
 const element = <h1>whats up C-Rod</h1>
 
-ReactDOM.render(<SecondCalendar date={new Date('August 10 2019')}/>, document.getElementById('app'));
+ReactDOM.render(<Calendar date={new Date('August 10 2019')}/>, document.getElementById('app'));
