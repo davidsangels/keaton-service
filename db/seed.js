@@ -3,15 +3,11 @@ const Booking = require('./bookings.js');
 const faker = require('faker');
 const dateFns = require('date-fns');
 
-const dateFormat = 'dddd YYYY MMMM dd';
+const dateFormat = 'dddd YYYY MMMM';
 const date = faker.date.between('2019-07-11', '2019-07-11');
 const date2 = new Date();
-console.log('date object thing', date2);
-console.log(date);
-console.log(dateFns.format(date2, dateFormat));
-console.log(dateFns.isSameDay(date, date2));
+
 const date3 = dateFns.addDays(date, 1);
-console.log(date3);
 
 const dates = [];
 while (dates.length < 50) {
@@ -25,7 +21,6 @@ while (dates.length < 50) {
   }
 }
 
-console.log(dates);
 
 
 
