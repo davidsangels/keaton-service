@@ -239,13 +239,20 @@ main {
 
 }
 
-.box .price {
+.boxBig {
+  display: block;
+  border-style: solid;
+  height: 500px;
+  width: 400px;
+}
+
+.price {
   margin-top: 10px;
   margin-left: 15px;
   color: rgb(72, 72, 72);
 }
 
-.box .reviews {
+.reviews {
   /* background-image: url('reviews.png'); */
   margin-left: 20px;
   margin-right: 20px;
@@ -253,58 +260,105 @@ main {
   border-color: rgb(72, 72, 72);
 }
 
-.box .line {
+.line {
   border-bottom: 1px solid;
   border-color: rgb(72, 72, 72);
   margin-left: 20px;
   margin-right: 20px;
 }
 
-.box .datesText {
+.datesText {
   margin-left: 20px;
   margin-top: 20px;
   font-size: 15px;
 }
 
-.box .date-display-wrapper {
+.date-display-wrapper {
   margin-left: 15px;
   margin-right: 15px;
   border: 1px solid;
   padding: 10px 10px 10px 10px;
 
 }
-.box .date-checkin-wrapper {
+.date-checkin-wrapper {
   width: 40%;
   display: inline-block;
 }
 
-.box .date-checkin-text {
+.date-checkin-text {
   margin-left: 15px;
 }
 
-.box .date-arrow-wrapper {
+.date-arrow-wrapper {
   display: inline-block;
-  margin-left: 17px;
+  margin-left: 15px;
 }
 
-.box .date-checkout-wrapper {
+.date-checkout-wrapper {
   width: 45%;
   display: inline-block;
 }
 
-.box .date-checkout-text {
+.date-checkout-text {
   margin-left: 55px;
 }
 
-.box .guests-text {
+.guests-text {
   margin-left: 20px;
   margin-top: 20px;
   font-size: 15px;
 }
 
-.box .guests-display-wrapper {
+.guests-display-wrapper {
   margin-left: 15px;
   margin-right: 15px;
   border: 1px solid;
   padding: 10px 10px 10px 10px;
+}
+
+.price-calculation-wrapper {
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.price-calculation {
+  border-bottom: solid 1px;
+  margin-right: 20px;
+  padding: 10px 0px 10px 0px;
+}
+
+.price-calculation-wrapper .result {
+  float: right;
+}
+
+.total-calculation {
+  margin-right: 20px;
+  padding: 5px 0px 0px 0px;
+}
+
+.booking {
+  color: #ffffff !important;
+  border-radius: 4px !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+  background: rgb(255, 90, 95) !important;
+  border-color: transparent !important;
+  font-size: 14px !important;
+  line-height: 24px !important;
+  letter-spacing: normal !important;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  font-weight: 700 !important;
+  padding-left: 22px !important;
+  padding-right: 22px !important;
+  box-shadow: none !important;
+  width: 100% !important;
+}
+
+.booking-button {
+  color: #ffffff !important;
+  text-align: center;
+  margin: 10px;
+  margin-top: 25px;
 }

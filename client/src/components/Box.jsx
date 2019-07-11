@@ -68,11 +68,12 @@ class Box extends React.Component {
 
 
   render() {
+    const { price, serviceFee, reviewScore, maxGuests, maxAdults, maxChildren, maxInfants, minBooking, maxBooking } = this.state;
     if (this.state.view === 'noDateSelection') {
       return (
         <div className='box'>
           <div className='price'>
-            <span style={{fontSize:'25px'}}><b>$69</b></span> per night
+            <span style={{fontSize:'25px'}}><b>${price}</b></span> per night
           </div>
 
 
@@ -104,13 +105,19 @@ class Box extends React.Component {
             </div>
           </div>
 
+          <div className='booking-button'>
+            <button type='submit' className='booking' aria-busy='false' date-veloute='book-it-button'>
+              <div className='button-text'>Reserve</div>
+            </button>
+          </div>
+
         </div>
       )
     } else if (this.state.view === 'firstDateSelection') {
       return (
         <div className='box'>
           <div className='price'>
-            <span style={{fontSize:'25px'}}><b>$69</b></span> per night
+            <span style={{fontSize:'25px'}}><b>${price}</b></span> per night
           </div>
 
 
@@ -127,7 +134,7 @@ class Box extends React.Component {
       return (
         <div className='box'>
           <div className='price'>
-            <span style={{fontSize:'25px'}}><b>$69</b></span> per night
+            <span style={{fontSize:'25px'}}><b>${price}</b></span> per night
           </div>
 
 
@@ -142,10 +149,15 @@ class Box extends React.Component {
       )
     } else if (this.state.view === 'datesSelected') {
       const dateFormat = "MMM D YYYY"
+      const { firstDate, secondDate } = this.state;
+      const stayLength = dateFns.differenceInCalendarDays(secondDate, firstDate) + 1;
+      const stayPrice = stayLength * price;
+      const totalPrice = stayPrice + serviceFee;
+      console.log(stayLength);
       return (
-        <div className='box'>
+        <div className='boxBig'>
           <div className='price'>
-            <span style={{fontSize:'25px'}}><b>$69</b></span> per night
+            <span style={{fontSize:'25px'}}><b>${price}</b></span> per night
           </div>
 
 
@@ -157,7 +169,7 @@ class Box extends React.Component {
           <div className='datesText'>Dates</div>
           <div className='date-display-wrapper'>
             <div className='date-checkin-wrapper' onClick={this.onCheckIn}>
-              <div className='date-checkin-text'>{dateFns.format(this.state.firstDate, dateFormat)}</div>
+              <div className='date-checkin-text'>{dateFns.format(firstDate, dateFormat)}</div>
             </div>
             <div className='date-arrow-wrapper'>
               <div className='date-arrow-text'>-->
@@ -165,7 +177,7 @@ class Box extends React.Component {
             </div>
             <div className='date-checkout-wrapper' >
               <div className='date-checkout-text'>
-                {dateFns.format(this.state.secondDate, dateFormat)}
+                {dateFns.format(secondDate, dateFormat)}
               </div>
             </div>
           </div>
@@ -175,6 +187,18 @@ class Box extends React.Component {
             <div className='guests-display-text'>
               1 guest
             </div>
+          </div>
+
+          <div className='price-calculation-wrapper'>
+            <div className='price-calculation'>${price} x {stayLength} nights<span className='result'>${stayPrice}</span></div>
+            <div className='price-calculation'>Service fee<span className='result'>${serviceFee}</span></div>
+            <div className='total-calculation'><b>Total</b><span className='result'><b>${totalPrice}</b></span></div>
+          </div>
+
+          <div className='booking-button'>
+            <button type='submit' className='booking' aria-busy='false' date-veloute='book-it-button'>
+              <div className='button-text'>Reserve</div>
+            </button>
           </div>
 
         </div>
