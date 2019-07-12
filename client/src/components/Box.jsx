@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
+import dateFns from 'date-fns';
 import Calendar from './CalendarExample.jsx';
 import SecondCalendar from './SecondCalendar.jsx';
-import dateFns from "date-fns";
 import Guest from './Guest.jsx';
 
 class Box extends React.Component {
   constructor() {
-    super()
+    super();
 
     this.state = {
       view: 'noDateSelection',
-    }
+    };
 
     this.getServerData = this.getServerData.bind(this);
     this.onCheckIn = this.onCheckIn.bind(this);
@@ -18,68 +18,80 @@ class Box extends React.Component {
     this.secondDateSelection = this.secondDateSelection.bind(this);
     this.onGuestSelectionNoDates = this.onGuestSelectionNoDates.bind(this);
     this.onGuestSelectionDoneNoDates = this.onGuestSelectionDoneNoDates.bind(this);
-
   }
 
   componentDidMount() {
     this.getServerData();
   }
 
-  firstDateSelection(day) {
-    this.setState({
-      view: 'secondDateSelection',
-      firstDate: day
-    });
-  }
-
-  secondDateSelection(day) {
-    if (!this.state.guestNumber) {
-      this.setState({
-        view: 'datesSelected',
-        secondDate: day
-      })
-    } else {
-      this.setState({
-        view: 'datesSelectedWithGuests',
-        secondDate: day
-      })
-    }
-  }
-
-  getServerData() {
-    axios.get('/bookings')
-    .then((response) => {
-      let { price, serviceFee, reviewScore, reviewAmount, maxGuests, maxAdults, maxChildren, maxInfants, minBooking, maxBooking, reservations } = response.data;
-
-      const parsedReservations = JSON.parse(reservations);
-
-      this.setState({
-        price,
-        serviceFee,
-        reviewScore,
-        reviewAmount,
-        maxGuests,
-        maxAdults,
-        maxChildren,
-        maxInfants,
-        minBooking,
-        maxBooking,
-        takenDates: parsedReservations,
-      })
-    })
-  }
-
-
   onCheckIn() {
     this.setState({
-      view: 'firstDateSelection'
+      view: 'firstDateSelection',
     });
   }
 
   onGuestSelectionNoDates() {
     this.setState({
-      view: 'guestSelectionNoDates'
-    })
+      view: 'guestSelectionNoDates',
+    });
+  }
+
+
+  getServerData() {
+    axios.get('/bookings')
+      .then((response) => {
+        const {
+          price,
+          serviceFee,
+          reviewScore,
+          reviewAmount,
+          maxGuests,
+          maxAdults,
+          maxChildren,
+          maxInfants,
+          minBooking,
+          maxBooking,
+          reservations,
+        } = response.data;
+
+        const parsedReservations = JSON.parse(reservations);
+
+        this.setState({
+          price,
+          serviceFee,
+          reviewScore,
+          reviewAmount,
+          maxGuests,
+          maxAdults,
+          maxChildren,
+          maxInfants,
+          minBooking,
+          maxBooking,
+          takenDates: parsedReservations,
+        });
+      });
+  }
+
+  firstDateSelection(day) {
+    this.setState({
+      view: 'secondDateSelection',
+      firstDate: day,
+    });
+  }
+
+  secondDateSelection(day) {
+    const { guestNumber } = this.state;
+    if (!guestNumber) {
+      this.setState({
+        view: 'datesSelected',
+        secondDate: day,
+      });
+    } else {
+      this.setState({
+        view: 'datesSelectedWithGuests',
+        secondDate: day,
+      });
+    }
   }
 
   onGuestSelectionDoneNoDates(guestNumber, infantNumber) {
