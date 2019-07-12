@@ -36,6 +36,22 @@ class Box extends React.Component {
     });
   }
 
+  onGuestSelectionDoneNoDates(guestNumber, infantNumber) {
+    if (!this.state.secondDate) {
+      this.setState({
+        view: 'guestSelectionDoneNoDates',
+        guestNumber,
+        infantNumber,
+      });
+    } else {
+      this.setState({
+        view: 'datesSelectedWithGuests',
+        guestNumber,
+        infantNumber,
+      });
+    }
+  }
+
 
   getServerData() {
     axios.get('/bookings')
@@ -91,22 +107,6 @@ class Box extends React.Component {
         view: 'datesSelectedWithGuests',
         secondDate: day,
       });
-    }
-  }
-
-  onGuestSelectionDoneNoDates(guestNumber, infantNumber) {
-    if (!this.state.secondDate) {
-      this.setState({
-        view: 'guestSelectionDoneNoDates',
-        guestNumber,
-        infantNumber,
-      })
-    } else {
-      this.setState({
-        view: 'datesSelectedWithGuests',
-        guestNumber,
-        infantNumber,
-      })
     }
   }
 
