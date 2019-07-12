@@ -134,6 +134,9 @@ class Box extends React.Component {
               <div className='button-text'>Reserve</div>
             </button>
           </div>
+          <div className='charge-message'>
+            You won't be charged yet
+          </div>
 
         </div>
       )
@@ -224,6 +227,9 @@ class Box extends React.Component {
               <div className='button-text'>Reserve</div>
             </button>
           </div>
+          <div className='charge-message'>
+            You won't be charged yet
+          </div>
 
         </div>
       )
@@ -298,6 +304,9 @@ class Box extends React.Component {
             <button type='submit' className='booking' aria-busy='false' date-veloute='book-it-button'>
               <div className='button-text'>Reserve</div>
             </button>
+          </div>
+          <div className='charge-message'>
+            You won't be charged yet
           </div>
         </div>
       )

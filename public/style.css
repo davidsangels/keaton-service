@@ -234,7 +234,7 @@ main {
 .box {
   display: block;
   border-style: solid;
-  height: 350px;
+  height: 375px;
   width: 400px;
 
 }
@@ -361,6 +361,16 @@ main {
   text-align: center;
   margin: 10px;
   margin-top: 25px;
+}
+
+.charge-message {
+  overflow-wrap: break-word !important;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    line-height: 1.33333em !important;
+    color: rgb(72, 72, 72) !important;
+    margin-left: 118px;
 }
 
 
