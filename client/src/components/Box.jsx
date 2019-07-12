@@ -17,6 +17,7 @@ class Box extends React.Component {
     this.firstDateSelection = this.firstDateSelection.bind(this);
     this.secondDateSelection = this.secondDateSelection.bind(this);
     this.onGuestSelectionNoDates = this.onGuestSelectionNoDates.bind(this);
+    this.onGuestSelectionDoneNoDates = this.onGuestSelectionDoneNoDates.bind(this);
 
   }
 
@@ -32,10 +33,17 @@ class Box extends React.Component {
   }
 
   secondDateSelection(day) {
-    this.setState({
-      view: 'datesSelected',
-      secondDate: day
-    })
+    if (!this.state.guestNumber) {
+      this.setState({
+        view: 'datesSelected',
+        secondDate: day
+      })
+    } else {
+      this.setState({
+        view: 'datesSelectedWithGuests',
+        secondDate: day
+      })
+    }
   }
 
   getServerData() {
@@ -71,6 +79,14 @@ class Box extends React.Component {
   onGuestSelectionNoDates() {
     this.setState({
       view: 'guestSelectionNoDates'
+    })
+  }
+
+  onGuestSelectionDoneNoDates(guestNumber, infantNumber) {
+    this.setState({
+      view: 'guestSelectionDoneNoDates',
+      guestNumber,
+      infantNumber,
     })
   }
 
@@ -239,9 +255,54 @@ class Box extends React.Component {
               </div>
             </div>
           </div>
-          <Guest />
+          <Guest maxGuests={maxGuests} onGuestSelectionDoneNoDates={this.onGuestSelectionDoneNoDates}/>
         </div>
       )
+    } else if (this.state.view === 'guestSelectionDoneNoDates') {
+      return (
+        <div className='box'>
+          <div className='price'>
+            <span style={{fontSize:'25px'}}><b>${price}</b></span> per night
+          </div>
+
+
+          <div className='reviews'>
+            *****
+          </div>
+
+
+          <div className='datesText'>Dates</div>
+          <div className='date-display-wrapper'>
+            <div className='date-checkin-wrapper' onClick={this.onCheckIn}>
+              <div className='date-checkin-text'>Check In</div>
+            </div>
+            <div className='date-arrow-wrapper'>
+              <div className='date-arrow-text'>-->
+              </div>
+            </div>
+            <div className='date-checkout-wrapper'>
+              <div className='date-checkout-text'>
+                Check Out
+              </div>
+            </div>
+          </div>
+
+          <div className='guests-text'>Guests</div>
+          <div className='guests-display-wrapper' onClick={this.onGuestSelectionNoDates}>
+            <div className='guests-display-text'>
+              {this.state.guestNumber} guests
+            </div>
+          </div>
+
+          <div className='booking-button'>
+            <button type='submit' className='booking' aria-busy='false' date-veloute='book-it-button'>
+              <div className='button-text'>Reserve</div>
+            </button>
+          </div>
+        </div>
+      )
+    } else if (this.state.view === 'datesSelectedWithGuests') {
+      return (<h1>eyyyo</h1>)
     }
   }
 }
