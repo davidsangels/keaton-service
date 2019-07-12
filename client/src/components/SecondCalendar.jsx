@@ -11,7 +11,7 @@ class SecondCalendar extends React.Component {
       currentMonth: props.date,
       selectedDate: props.date,
       nextBooking: '',
-      takenDates: ['July 7 2019', 'July 20 2019', 'August 5 2019', 'July 10 2019', 'August 19 2019', 'August 25 2019', 'September 15 2019'],
+      takenDates: '',
     };
 
     this.onDateClick = this.onDateClick.bind(this);
@@ -59,7 +59,7 @@ class SecondCalendar extends React.Component {
   }
 
   renderCells() {
-    const { currentMonth, selectedDate, takenDates } = this.state;
+    const { currentMonth, selectedDate, takenDates, minBooking, maxBooking } = this.state;
     const monthStart = dateFns.startOfMonth(currentMonth);
     const monthEnd = dateFns.endOfMonth(monthStart);
     const startDate = dateFns.startOfWeek(monthStart);
@@ -73,11 +73,32 @@ class SecondCalendar extends React.Component {
     let day = startDate;
     let formattedDate = "";
 
+    let nextMinBooking = dateFns.addDays(selectedDate, minBooking - 1);
+    let nextMaxBooking = dateFns.addDays(selectedDate, maxBooking);
+    console.log(nextMaxBooking);
+
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
         formattedDate = dateFns.format(day, dateFormat);
         const cloneDay = day;
         const taken = false;
+
+        if (!dateFns.isAfter(day, nextMinBooking)) {
+          taken = true;
+        }
+
+        if (dateFns.isSameDay(day, selectedDate)) {
+          taken = false;
+        }
+
+        if (dateFns.isAfter(day, nextMaxBooking)) {
+          taken = true;
+        }
+
+        if (dateFns.isAfter(day, this.state.nextBooking)) {
+          taken = true;
+        }
+
 
         //Check if current day is before selected date.
           //if it is, then taken = true
@@ -150,6 +171,7 @@ class SecondCalendar extends React.Component {
       for (let j = 0; j < takenDates.length; j++) {
         if (dateFns.isSameDay(day, takenDates[j])) {
           console.log(day);
+          console.log(takenDates[j])
           this.setState({
             nextBooking: day
           })
@@ -182,6 +204,7 @@ class SecondCalendar extends React.Component {
         takenDates: parsedReservations,
       })
     })
+    .then(() => this.findNextBooking())
   }
 
   componentDidMount() {
