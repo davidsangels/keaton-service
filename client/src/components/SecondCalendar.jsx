@@ -75,7 +75,6 @@ class SecondCalendar extends React.Component {
 
     let nextMinBooking = dateFns.addDays(selectedDate, minBooking - 1);
     let nextMaxBooking = dateFns.addDays(selectedDate, maxBooking);
-    console.log(nextMaxBooking);
 
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
@@ -170,8 +169,6 @@ class SecondCalendar extends React.Component {
     while (count < 100) {
       for (let j = 0; j < takenDates.length; j++) {
         if (dateFns.isSameDay(day, takenDates[j])) {
-          console.log(day);
-          console.log(takenDates[j])
           this.setState({
             nextBooking: day
           })

@@ -3,6 +3,7 @@ import dateFns from 'date-fns';
 import Calendar from './CalendarExample.jsx';
 import SecondCalendar from './SecondCalendar.jsx';
 import Guest from './Guest.jsx';
+import axios from 'axios';
 
 class Box extends React.Component {
   constructor() {
@@ -200,7 +201,6 @@ class Box extends React.Component {
       const stayLength = dateFns.differenceInCalendarDays(secondDate, firstDate) + 1;
       const stayPrice = stayLength * price;
       const totalPrice = stayPrice + serviceFee;
-      console.log(stayLength);
       return (
         <div className='boxBig'>
           <div className='price'>
