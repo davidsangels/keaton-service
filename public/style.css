@@ -236,7 +236,7 @@ main {
   border-style: solid;
   height: 375px;
   width: 400px;
-
+  border-width: 1px !important;
 }
 
 .boxBig {
@@ -244,6 +244,7 @@ main {
   border-style: solid;
   height: 500px;
   width: 400px;
+  border-width: 1px !important;
 }
 
 .price {

@@ -22,9 +22,7 @@ describe('<Box />', () => {
     const button = component.find('.date-checkin-wrapper')
     button.simulate('click');
     expect(component.containsMatchingElement(<Calendar />)).toBe(true);
-  })
-
-
+  });
 });
 
 describe('Calendar', () => {
@@ -32,14 +30,6 @@ describe('Calendar', () => {
     const component = shallow(<Calendar />);
     expect(component.exists()).toBe(true);
   });
-
-  // it('opens the second calendar on clicking a box', () => {
-  //   const shell = shallow(<Box />);
-  //   const component = shallow(<Calendar />);
-  //   const button = component.find('.cell');
-  //   button.simulate('click');
-  //   expect(shell.containsMatchingElement(<SecondCalendar />)).toBe(true);
-  // });
 });
 
 describe('SecondCalendar', () => {
@@ -62,6 +52,12 @@ describe('Box Functions', () => {
     const instance = wrapper.instance();
     instance.onGuestSelectionNoDates();
     expect(wrapper.state('view')).toBe('guestSelectionNoDates');
+  });
+
+  it('should properly change view', () => {
+    const instance = wrapper.instance();
+    instance.onGuestSelectionWithDates();
+    expect(wrapper.state('view')).toBe('guestSelectionWithDates');
   });
 
   it('should properly change view on checkin', () => {
@@ -135,8 +131,8 @@ describe('SecondCalendar Functions', () => {
    });
 });
 
-describe('Guest Functions', () => {
-  const wrapper = shallow(<Guest />);
+describe('Guest Increment/Decrement Functions', () => {
+  const wrapper = shallow(<Box />);
   it('should decrement adults', () => {
     const instance = wrapper.instance();
     wrapper.setState({
