@@ -254,11 +254,14 @@ main {
 }
 
 .reviews {
-  /* background-image: url('reviews.png'); */
   margin-left: 20px;
   margin-right: 20px;
   border-bottom: 1px solid;
   border-color: rgb(72, 72, 72);
+}
+
+.review-amount {
+  font-size: 11px;
 }
 
 .line {
