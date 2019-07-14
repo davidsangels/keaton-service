@@ -11,6 +11,9 @@ class Box extends React.Component {
 
     this.state = {
       view: 'noDateSelection',
+      adults: 1,
+      children: 0,
+      infants: 0,
     };
 
     this.getServerData = this.getServerData.bind(this);
@@ -18,11 +21,66 @@ class Box extends React.Component {
     this.firstDateSelection = this.firstDateSelection.bind(this);
     this.secondDateSelection = this.secondDateSelection.bind(this);
     this.onGuestSelectionNoDates = this.onGuestSelectionNoDates.bind(this);
+    this.onGuestSelectionWithDates = this.onGuestSelectionWithDates.bind(this);
     this.onGuestSelectionDoneNoDates = this.onGuestSelectionDoneNoDates.bind(this);
+    this.adultsDecrement = this.adultsDecrement.bind(this);
+    this.adultsIncrement = this.adultsIncrement.bind(this);
+    this.childrenDecrement = this.childrenDecrement.bind(this);
+    this.childrenIncrement = this.childrenIncrement.bind(this);
+    this.infantsDecrement = this.infantsDecrement.bind(this);
+    this.infantsIncrement = this.infantsIncrement.bind(this);
   }
 
   componentDidMount() {
     this.getServerData();
+  }
+
+  adultsDecrement() {
+    let { adults } = this.state;
+    adults -= 1;
+    this.setState({
+      adults
+    });
+  }
+
+  adultsIncrement() {
+    let { adults } = this.state;
+    adults += 1;
+    this.setState({
+      adults
+    });
+  }
+
+  childrenDecrement() {
+    let { children } = this.state;
+    children -= 1;
+    this.setState({
+      children
+    });
+  }
+
+  childrenIncrement() {
+    let { children } = this.state;
+    children += 1;
+    this.setState({
+      children
+    });
+  }
+
+  infantsDecrement() {
+    let { infants } = this.state;
+    infants -= 1;
+    this.setState({
+      infants
+    });
+  }
+
+  infantsIncrement() {
+    let { infants } = this.state;
+    infants += 1;
+    this.setState({
+      infants
+    });
   }
 
   onCheckIn() {
@@ -51,6 +109,12 @@ class Box extends React.Component {
         infantNumber,
       });
     }
+  }
+
+  onGuestSelectionWithDates() {
+    this.setState({
+      view: 'guestSelectionWithDates',
+    })
   }
 
 
@@ -113,7 +177,7 @@ class Box extends React.Component {
 
 
   render() {
-    const { price, serviceFee, reviewScore, maxGuests, maxAdults, maxChildren, maxInfants, minBooking, maxBooking } = this.state;
+    const { price, serviceFee, reviewScore, maxGuests, maxAdults, maxChildren, maxInfants, minBooking, maxBooking, adults, children } = this.state;
     if (this.state.view === 'noDateSelection') {
       return (
         <div className='box'>
@@ -146,7 +210,7 @@ class Box extends React.Component {
           <div className='guests-text'>Guests</div>
           <div className='guests-display-wrapper' onClick={this.onGuestSelectionNoDates}>
             <div className='guests-display-text'>
-              1 guest
+              {adults + children} guests
             </div>
           </div>
 
@@ -230,7 +294,7 @@ class Box extends React.Component {
           </div>
 
           <div className='guests-text'>Guests</div>
-          <div className='guests-display-wrapper' onClick={this.onGuestSelectionNoDates}>
+          <div className='guests-display-wrapper' onClick={this.onGuestSelectionWithDates}>
             <div className='guests-display-text'>
               {this.state.guestNumber || 1} guests
             </div>
@@ -254,6 +318,7 @@ class Box extends React.Component {
         </div>
       )
     } else if (this.state.view === 'guestSelectionNoDates') {
+      const { adults, children, infants } = this.state;
       return (
         <div className='box'>
           <div className='price'>
@@ -281,10 +346,48 @@ class Box extends React.Component {
               </div>
             </div>
           </div>
-          <Guest maxGuests={maxGuests} onGuestSelectionDoneNoDates={this.onGuestSelectionDoneNoDates}/>
+          <Guest maxGuests={maxGuests} onGuestSelectionDoneNoDates={this.onGuestSelectionDoneNoDates} adultsDecrement={this.adultsDecrement} adultsIncrement={this.adultsIncrement} adults={adults}
+          childrenDecrement={this.childrenDecrement} childrenIncrement={this.childrenIncrement} children={children}
+          infantsDecrement={this.infantsDecrement} infantsIncrement={this.infantsIncrement} infants={infants}/>
+        </div>
+      )
+    } else if (this.state.view === 'guestSelectionWithDates') {
+      const { adults, children, infants, firstDate, secondDate } = this.state;
+      const dateFormat = 'MMM D YYYY';
+      return (
+        <div className='box'>
+          <div className='price'>
+            <span style={{fontSize:'25px'}}><b>${price}</b></span> per night
+          </div>
+
+
+          <div className='reviews'>
+            *****
+          </div>
+
+
+          <div className='datesText'>Dates</div>
+          <div className='date-display-wrapper'>
+            <div className='date-checkin-wrapper' onClick={this.onCheckIn}>
+              <div className='date-checkin-text'>{dateFns.format(firstDate, dateFormat)}</div>
+            </div>
+            <div className='date-arrow-wrapper'>
+              <div className='date-arrow-text'>-->
+              </div>
+            </div>
+            <div className='date-checkout-wrapper'>
+              <div className='date-checkout-text'>
+                {dateFns.format(secondDate, dateFormat)}
+              </div>
+            </div>
+          </div>
+          <Guest maxGuests={maxGuests} onGuestSelectionDoneNoDates={this.onGuestSelectionDoneNoDates} adultsDecrement={this.adultsDecrement} adultsIncrement={this.adultsIncrement} adults={adults}
+          childrenDecrement={this.childrenDecrement} childrenIncrement={this.childrenIncrement} children={children}
+          infantsDecrement={this.infantsDecrement} infantsIncrement={this.infantsIncrement} infants={infants}/>
         </div>
       )
     } else if (this.state.view === 'guestSelectionDoneNoDates') {
+      const { adults, children, infants } = this.state;
       return (
         <div className='box'>
           <div className='price'>
@@ -316,7 +419,7 @@ class Box extends React.Component {
           <div className='guests-text'>Guests</div>
           <div className='guests-display-wrapper' onClick={this.onGuestSelectionNoDates}>
             <div className='guests-display-text'>
-              {this.state.guestNumber} guests
+              {adults + children} guests
             </div>
           </div>
 
@@ -336,7 +439,7 @@ class Box extends React.Component {
       const stayLength = dateFns.differenceInCalendarDays(secondDate, firstDate) + 1;
       const stayPrice = stayLength * price;
       const totalPrice = stayPrice + serviceFee;
-      console.log(stayLength);
+      let { adults, children } = this.state;
       return (
         <div className='boxBig'>
           <div className='price'>
@@ -366,9 +469,9 @@ class Box extends React.Component {
           </div>
 
           <div className='guests-text'>Guests</div>
-          <div className='guests-display-wrapper' onClick={this.onGuestSelectionNoDates}>
+          <div className='guests-display-wrapper' onClick={this.onGuestSelectionWithDates}>
             <div className='guests-display-text'>
-              {this.state.guestNumber} guests
+              {adults + children} guests
             </div>
           </div>
 
@@ -386,7 +489,6 @@ class Box extends React.Component {
           <div className='charge-message'>
             You won't be charged yet
           </div>
-
         </div>
       )
     }

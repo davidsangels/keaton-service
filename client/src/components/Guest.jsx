@@ -8,67 +8,12 @@ class Guest extends React.Component {
       children: 0,
       infants: 0,
     }
-    this.adultsDecrement = this.adultsDecrement.bind(this);
-    this.adultsIncrement = this.adultsIncrement.bind(this);
-    this.childrenDecrement = this.childrenDecrement.bind(this);
-    this.childrenIncrement = this.childrenIncrement.bind(this);
-    this.infantsDecrement = this.infantsDecrement.bind(this);
-    this.infantsIncrement = this.infantsIncrement.bind(this);
-    this.renderAdults = this.renderAdults.bind(this);
-    this.renderChildren = this.renderChildren.bind(this);
-    this.renderInfants = this.renderInfants.bind(this);
   }
 
-  adultsDecrement() {
-    let adults = this.state.adults;
-    adults -= 1;
-    this.setState({
-      adults
-    });
-  }
 
-  adultsIncrement() {
-    let adults = this.state.adults;
-    adults += 1;
-    this.setState({
-      adults
-    });
-  }
-
-  childrenDecrement() {
-    let children = this.state.children;
-    children -= 1;
-    this.setState({
-      children
-    })
-  }
-
-  childrenIncrement() {
-    let children = this.state.children;
-    children += 1;
-    this.setState({
-      children
-    })
-  }
-
-  infantsDecrement() {
-    let infants = this.state.infants;
-    infants -= 1;
-    this.setState({
-      infants
-    })
-  }
-
-  infantsIncrement() {
-    let infants = this.state.infants;
-    infants += 1;
-    this.setState({
-      infants
-    })
-  }
 
   renderAdults() {
-    const { adults, children } = this.state;
+    const { adults, children, adultsDecrement, adultsIncrement } = this.props;
     let lowDisabled = false;
     if (adults <= 1) {
       lowDisabled = true;
@@ -87,18 +32,18 @@ class Guest extends React.Component {
           <b>Adults</b>
           <span className='adult-increment-container'>
 
-            <button disabled={lowDisabled} onClick={this.adultsDecrement}className='increment-button'><span className='button-content'><svg viewBox="0 0 24 24" role="img" aria-label="subtract" focusable="false" style={{height: '1em', width: '1em', display: 'block', fill: 'currentcolor'}}><rect height={2} rx={1} width={12} x={6} y={11} /><rect height={2} rx={1} width={12} x={6} y={11} /></svg></span></button>
+            <button disabled={lowDisabled} onClick={adultsDecrement} className='increment-button'><span className='button-content'><svg viewBox="0 0 24 24" role="img" aria-label="subtract" focusable="false" style={{height: '1em', width: '1em', display: 'block', fill: 'currentcolor'}}><rect height={2} rx={1} width={12} x={6} y={11} /><rect height={2} rx={1} width={12} x={6} y={11} /></svg></span></button>
 
-            <div className='guest-counter'>{this.state.adults}</div>
+            <div className='guest-counter'>{adults}</div>
 
-            <button disabled={highDisabled} onClick={this.adultsIncrement}className='increment-button'><span className='button-content'><svg viewBox="0 0 24 24" role="img" aria-label="add" focusable="false" style={{height: '1em', width: '1em', display: 'block', fill: 'currentcolor'}}><rect height={2} rx={1} width={12} x={6} y={11} /><rect height={12} rx={1} width={2} x={11} y={6} /></svg></span></button>
+            <button disabled={highDisabled} onClick={adultsIncrement} className='increment-button'><span className='button-content'><svg viewBox="0 0 24 24" role="img" aria-label="add" focusable="false" style={{height: '1em', width: '1em', display: 'block', fill: 'currentcolor'}}><rect height={2} rx={1} width={12} x={6} y={11} /><rect height={12} rx={1} width={2} x={11} y={6} /></svg></span></button>
           </span>
         </div>
     )
   }
 
   renderChildren() {
-    const { children, adults } = this.state;
+    const { children, adults, childrenDecrement, childrenIncrement } = this.props;
     let lowDisabled = false;
     if (children <= 0) {
       lowDisabled = true;
@@ -117,11 +62,11 @@ class Guest extends React.Component {
           <b>Children</b>
           <span className='children-increment-container'>
 
-            <button disabled={lowDisabled} onClick={this.childrenDecrement}className='increment-button'><span className='button-content'><svg viewBox="0 0 24 24" role="img" aria-label="subtract" focusable="false" style={{height: '1em', width: '1em', display: 'block', fill: 'currentcolor'}}><rect height={2} rx={1} width={12} x={6} y={11} /><rect height={2} rx={1} width={12} x={6} y={11} /></svg></span></button>
+            <button disabled={lowDisabled} onClick={childrenDecrement} className='increment-button'><span className='button-content'><svg viewBox="0 0 24 24" role="img" aria-label="subtract" focusable="false" style={{height: '1em', width: '1em', display: 'block', fill: 'currentcolor'}}><rect height={2} rx={1} width={12} x={6} y={11} /><rect height={2} rx={1} width={12} x={6} y={11} /></svg></span></button>
 
-            <div className='guest-counter'>{this.state.children}</div>
+            <div className='guest-counter'>{children}</div>
 
-            <button disabled={highDisabled} onClick={this.childrenIncrement}className='increment-button'><span className='button-content'><svg viewBox="0 0 24 24" role="img" aria-label="add" focusable="false" style={{height: '1em', width: '1em', display: 'block', fill: 'currentcolor'}}><rect height={2} rx={1} width={12} x={6} y={11} /><rect height={12} rx={1} width={2} x={11} y={6} /></svg></span></button>
+            <button disabled={highDisabled} onClick={childrenIncrement} className='increment-button'><span className='button-content'><svg viewBox="0 0 24 24" role="img" aria-label="add" focusable="false" style={{height: '1em', width: '1em', display: 'block', fill: 'currentcolor'}}><rect height={2} rx={1} width={12} x={6} y={11} /><rect height={12} rx={1} width={2} x={11} y={6} /></svg></span></button>
           </span>
           <div className='guest-subtext'>Ages 2-12</div>
         </div>
@@ -129,7 +74,7 @@ class Guest extends React.Component {
   }
 
   renderInfants() {
-    const { infants } = this.state;
+    const { infants, infantsDecrement, infantsIncrement } = this.props;
     let lowDisabled = false;
     if (infants <= 0) {
       lowDisabled = true;
@@ -148,11 +93,11 @@ class Guest extends React.Component {
           <b>Infants</b>
           <span className='infant-increment-container'>
 
-            <button disabled={lowDisabled} onClick={this.infantsDecrement}className='increment-button'><span className='button-content'><svg viewBox="0 0 24 24" role="img" aria-label="subtract" focusable="false" style={{height: '1em', width: '1em', display: 'block', fill: 'currentcolor'}}><rect height={2} rx={1} width={12} x={6} y={11} /><rect height={2} rx={1} width={12} x={6} y={11} /></svg></span></button>
+            <button disabled={lowDisabled} onClick={infantsDecrement} className='increment-button'><span className='button-content'><svg viewBox="0 0 24 24" role="img" aria-label="subtract" focusable="false" style={{height: '1em', width: '1em', display: 'block', fill: 'currentcolor'}}><rect height={2} rx={1} width={12} x={6} y={11} /><rect height={2} rx={1} width={12} x={6} y={11} /></svg></span></button>
 
-            <div className='guest-counter'>{this.state.infants}</div>
+            <div className='guest-counter'>{infants}</div>
 
-            <button disabled={highDisabled} onClick={this.infantsIncrement}className='increment-button'><span className='button-content'><svg viewBox="0 0 24 24" role="img" aria-label="add" focusable="false" style={{height: '1em', width: '1em', display: 'block', fill: 'currentcolor'}}><rect height={2} rx={1} width={12} x={6} y={11} /><rect height={12} rx={1} width={2} x={11} y={6} /></svg></span></button>
+            <button disabled={highDisabled} onClick={infantsIncrement} className='increment-button'><span className='button-content'><svg viewBox="0 0 24 24" role="img" aria-label="add" focusable="false" style={{height: '1em', width: '1em', display: 'block', fill: 'currentcolor'}}><rect height={2} rx={1} width={12} x={6} y={11} /><rect height={12} rx={1} width={2} x={11} y={6} /></svg></span></button>
           </span>
           <div className='guest-subtext'>Under 2</div>
         </div>
