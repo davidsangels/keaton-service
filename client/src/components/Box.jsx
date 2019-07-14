@@ -4,6 +4,7 @@ import Calendar from './CalendarExample.jsx';
 import SecondCalendar from './SecondCalendar.jsx';
 import Guest from './Guest.jsx';
 import axios from 'axios';
+import Stars from './Stars.jsx';
 
 class Box extends React.Component {
   constructor() {
@@ -14,6 +15,8 @@ class Box extends React.Component {
       adults: 1,
       children: 0,
       infants: 0,
+      reviewScore: 0,
+      reviewAmount: 0,
     };
 
     this.getServerData = this.getServerData.bind(this);
@@ -177,7 +180,7 @@ class Box extends React.Component {
 
 
   render() {
-    const { price, serviceFee, reviewScore, maxGuests, maxAdults, maxChildren, maxInfants, minBooking, maxBooking, adults, children } = this.state;
+    const { price, serviceFee, reviewScore, reviewAmount, maxGuests, maxAdults, maxChildren, maxInfants, minBooking, maxBooking, adults, children } = this.state;
     if (this.state.view === 'noDateSelection') {
       return (
         <div className='box'>
@@ -187,7 +190,7 @@ class Box extends React.Component {
 
 
           <div className='reviews'>
-            *****
+            <Stars rating={reviewScore}/> <span className='review-amount'><b>{reviewAmount}</b></span>
           </div>
 
 
@@ -234,7 +237,7 @@ class Box extends React.Component {
 
 
           <div className='reviews'>
-            *****
+            <Stars rating={reviewScore}/> <span className='review-amount'><b>{reviewAmount}</b></span>
           </div>
 
 
@@ -251,7 +254,7 @@ class Box extends React.Component {
 
 
           <div className='reviews'>
-            *****
+            <Stars rating={reviewScore}/> <span className='review-amount'><b>{reviewAmount}</b></span>
           </div>
 
 
@@ -273,7 +276,7 @@ class Box extends React.Component {
 
 
           <div className='reviews'>
-            *****
+            <Stars rating={reviewScore}/> <span className='review-amount'><b>{reviewAmount}</b></span>
           </div>
 
 
@@ -327,7 +330,7 @@ class Box extends React.Component {
 
 
           <div className='reviews'>
-            *****
+            <Stars rating={reviewScore}/> <span className='review-amount'><b>{reviewAmount}</b></span>
           </div>
 
 
@@ -362,7 +365,7 @@ class Box extends React.Component {
 
 
           <div className='reviews'>
-            *****
+            <Stars rating={reviewScore}/> <span className='review-amount'><b>{reviewAmount}</b></span>
           </div>
 
 
@@ -396,7 +399,7 @@ class Box extends React.Component {
 
 
           <div className='reviews'>
-            *****
+            <Stars rating={reviewScore}/> <span className='review-amount'><b>{reviewAmount}</b></span>
           </div>
 
 
@@ -448,7 +451,7 @@ class Box extends React.Component {
 
 
           <div className='reviews'>
-            *****
+            <Stars rating={reviewScore}/> <span className='review-amount'><b>{reviewAmount}</b></span>
           </div>
 
 
