@@ -6,6 +6,7 @@ import Calendar from '../components/CalendarExample.jsx';
 import SecondCalendar from '../components/SecondCalendar.jsx';
 import Guest from '../components/Guest.jsx';
 import dateFns from "date-fns";
+import Stars from '../components/Stars.jsx';
 
 // const wrapper = shallow(<Box />);
 
@@ -42,6 +43,13 @@ describe('SecondCalendar', () => {
 describe('Guest', () => {
   it('renders 1 <Guest /> component', () => {
     const component = shallow(<Guest />);
+    expect(component.exists()).toBe(true);
+  });
+});
+
+describe('Stars', () => {
+  it('renders 1 <Stars /> component', () => {
+    const component = shallow(<Stars />);
     expect(component.exists()).toBe(true);
   });
 });
