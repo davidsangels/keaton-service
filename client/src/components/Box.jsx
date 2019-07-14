@@ -212,8 +212,9 @@ class Box extends React.Component {
 
           <div className='guests-text'>Guests</div>
           <div className='guests-display-wrapper' onClick={this.onGuestSelectionNoDates}>
-            <div className='guests-display-text'>
-              {adults + children} guests
+            <div className='guests-display-content'>
+              <div className='guests-display-text'>{adults + children} guests</div>
+              <span className='guests-dropdown-button'><svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style={{height: '16px', width: '16px', display: 'block', fill: 'currentcolor'}}><path d="m16.29 4.3a1 1 0 1 1 1.41 1.42l-8 8a1 1 0 0 1 -1.41 0l-8-8a1 1 0 1 1 1.41-1.42l7.29 7.29z" fillRule="evenodd" /></svg></span>
             </div>
           </div>
 
@@ -298,9 +299,10 @@ class Box extends React.Component {
 
           <div className='guests-text'>Guests</div>
           <div className='guests-display-wrapper' onClick={this.onGuestSelectionWithDates}>
-            <div className='guests-display-text'>
-              {this.state.guestNumber || 1} guests
-            </div>
+            <div className='guests-display-content'>
+                <div className='guests-display-text'>{adults + children} guests</div>
+                <span className='guests-dropdown-button'><svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style={{height: '16px', width: '16px', display: 'block', fill: 'currentcolor'}}><path d="m16.29 4.3a1 1 0 1 1 1.41 1.42l-8 8a1 1 0 0 1 -1.41 0l-8-8a1 1 0 1 1 1.41-1.42l7.29 7.29z" fillRule="evenodd" /></svg></span>
+              </div>
           </div>
 
           <div className='price-calculation-wrapper'>
@@ -421,9 +423,10 @@ class Box extends React.Component {
 
           <div className='guests-text'>Guests</div>
           <div className='guests-display-wrapper' onClick={this.onGuestSelectionNoDates}>
-            <div className='guests-display-text'>
-              {adults + children} guests
-            </div>
+            <div className='guests-display-content'>
+                <div className='guests-display-text'>{adults + children} guests</div>
+                <span className='guests-dropdown-button'><svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style={{height: '16px', width: '16px', display: 'block', fill: 'currentcolor'}}><path d="m16.29 4.3a1 1 0 1 1 1.41 1.42l-8 8a1 1 0 0 1 -1.41 0l-8-8a1 1 0 1 1 1.41-1.42l7.29 7.29z" fillRule="evenodd" /></svg></span>
+              </div>
           </div>
 
           <div className='booking-button'>
@@ -473,9 +476,10 @@ class Box extends React.Component {
 
           <div className='guests-text'>Guests</div>
           <div className='guests-display-wrapper' onClick={this.onGuestSelectionWithDates}>
-            <div className='guests-display-text'>
-              {adults + children} guests
-            </div>
+            <div className='guests-display-content'>
+                <div className='guests-display-text'>{adults + children} guests</div>
+                <span className='guests-dropdown-button'><svg viewBox="0 0 18 18" role="presentation" aria-hidden="true" focusable="false" style={{height: '16px', width: '16px', display: 'block', fill: 'currentcolor'}}><path d="m16.29 4.3a1 1 0 1 1 1.41 1.42l-8 8a1 1 0 0 1 -1.41 0l-8-8a1 1 0 1 1 1.41-1.42l7.29 7.29z" fillRule="evenodd" /></svg></span>
+              </div>
           </div>
 
           <div className='price-calculation-wrapper'>

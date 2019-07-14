@@ -320,6 +320,18 @@ main {
   padding: 10px 10px 10px 10px;
 }
 
+.guests-display-content {
+  display: flex;
+}
+
+.guests-display-text {
+  width: 89%;
+}
+
+.guests-dropdown-button {
+  margin-top: 5px;
+}
+
 .price-calculation-wrapper {
   margin-top: 15px;
   margin-left: 20px;
