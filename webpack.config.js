@@ -9,9 +9,24 @@ module.exports = {
               loader: 'babel-loader',
               options: {
                 presets: ['@babel/preset-react', '@babel/preset-env']
-              }
-            }
-          }
+              },
+            },
+          },
+          {
+          test: /\.css$/,
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                modules: {
+                localIdentName: '[name]__[local]--[hash:base64:5]',
+                },
+              },
+            },
+        ],
+      }
+
         ]
       },
        output: {
