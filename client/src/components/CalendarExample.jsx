@@ -1,5 +1,6 @@
 import React from "react";
 import dateFns from "date-fns";
+import styles from './style.css';
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -20,17 +21,17 @@ class Calendar extends React.Component {
     const dateFormat = "MMMM YYYY";
 
     return (
-      <div className="header row flex-middle">
-        <div className="col col-start">
-          <div className="icon" onClick={this.prevMonth}>
+      <div className={[styles.header, styles.row, styles.flexMiddle]}>
+        <div className={[styles.col, styles.colStart]}>
+          <div className={styles.icon} onClick={this.prevMonth}>
             chevron_left
           </div>
         </div>
-        <div className="col col-center">
+        <div className={[styles.col, styles.col-center]}>
           <span>{dateFns.format(this.state.currentMonth, dateFormat)}</span>
         </div>
         <div className="col col-end" onClick={this.nextMonth}>
-          <div className="icon">chevron_right</div>
+          <div className={styles.icon}>chevron_right</div>
         </div>
       </div>
     );
@@ -44,7 +45,7 @@ class Calendar extends React.Component {
 
     for (let i = 0; i < 7; i++) {
       days.push(
-        <div className="col col-center" key={i}>
+        <div className={[styles.col, styles.col-center]} key={i}>
           {dateFns.format(dateFns.addDays(startDate, i), dateFormat)}
         </div>
       );
