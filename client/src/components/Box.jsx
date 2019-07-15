@@ -5,6 +5,7 @@ import SecondCalendar from './SecondCalendar.jsx';
 import Guest from './Guest.jsx';
 import axios from 'axios';
 import Stars from './Stars.jsx';
+import styles from './style.css';
 
 class Box extends React.Component {
   constructor() {
@@ -218,8 +219,8 @@ class Box extends React.Component {
             </div>
           </div>
 
-          <div className='booking-button'>
-            <button type='submit' className='booking' aria-busy='false' date-veloute='book-it-button'>
+          <div className={styles.bookingButton}>
+            <button type='submit' className={styles.booking} aria-busy='false' date-veloute='book-it-button'>
               <div className='button-text'>Reserve</div>
             </button>
           </div>

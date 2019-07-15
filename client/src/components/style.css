@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+/* @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
 .icon {
@@ -20,7 +20,6 @@
 }
 
 
-/* VARIABLES */
 
 :root {
   --main-color: #1a8fff;
@@ -31,8 +30,6 @@
   --neutral-color: #fff;
 }
 
-
-/* GENERAL */
 
 * {
   box-sizing: border-box;
@@ -75,7 +72,6 @@ main {
 }
 
 
-/* GRID */
 
 .row {
   margin: 0;
@@ -111,8 +107,6 @@ main {
   text-align: right;
 }
 
-
-/* Calendar */
 
 .calendar {
   display: block;
@@ -229,7 +223,6 @@ main {
   width: calc(100%/7);
 }
 
-/* Box */
 
 .box {
   display: block;
@@ -350,7 +343,7 @@ main {
 .total-calculation {
   margin-right: 20px;
   padding: 5px 0px 0px 0px;
-}
+} */
 
 .booking {
   color: #ffffff !important;
@@ -378,7 +371,7 @@ main {
   margin: 10px;
   margin-top: 25px;
 }
-
+/*
 .charge-message {
   overflow-wrap: break-word !important;
     font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif !important;
@@ -483,4 +476,4 @@ button:disabled {
   text-decoration: var(--font-link-text-decoration, none) !important;
   float: right;
   margin-top: 10px;
-}
+} */
