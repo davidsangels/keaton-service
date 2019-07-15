@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './style.css';
 
 class Guest extends React.Component {
   constructor(props) {
@@ -28,9 +29,9 @@ class Guest extends React.Component {
       highDisabled = false;
     }
     return (
-      <div className='adult-container'>
+      <div className={styles.adultContainer}>
           <b>Adults</b>
-          <span className='adult-increment-container'>
+          <span className={styles.adultIncrementContainer}>
 
             <button disabled={lowDisabled} onClick={adultsDecrement} className='increment-button'><span className='button-content'><svg viewBox="0 0 24 24" role="img" aria-label="subtract" focusable="false" style={{height: '1em', width: '1em', display: 'block', fill: 'currentcolor'}}><rect height={2} rx={1} width={12} x={6} y={11} /><rect height={2} rx={1} width={12} x={6} y={11} /></svg></span></button>
 

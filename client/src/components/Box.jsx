@@ -307,9 +307,9 @@ class Box extends React.Component {
           </div>
 
           <div className={styles.priceCalculationWrapper}>
-            <div className={styles.priceCalculation}>${price} x {stayLength} nights<span className='result'>${stayPrice}</span></div>
-            <div className={styles.priceCalculation}>Service fee<span className='result'>${serviceFee}</span></div>
-            <div className={styles.totalCalculation}><b>Total</b><span className='result'><b>${totalPrice}</b></span></div>
+            <div className={styles.priceCalculation}>${price} x {stayLength} nights<span className={styles.result}>${stayPrice}</span></div>
+            <div className={styles.priceCalculation}>Service fee<span className={styles.result}>${serviceFee}</span></div>
+            <div className={styles.totalCalculation}><b>Total</b><span className={styles.result}><b>${totalPrice}</b></span></div>
           </div>
 
           <div className={styles.bookingButton}>
@@ -484,9 +484,9 @@ class Box extends React.Component {
           </div>
 
           <div className={styles.priceCalculationWrapper}>
-            <div className={styles.priceCalculation}>${price} x {stayLength} nights<span className='result'>${stayPrice}</span></div>
-            <div className={styles.priceCalculation}>Service fee<span className='result'>${serviceFee}</span></div>
-            <div className={styles.totalCalculation}><b>Total</b><span className='result'><b>${totalPrice}</b></span></div>
+            <div className={styles.priceCalculation}>${price} x {stayLength} nights<span className={styles.result}>${stayPrice}</span></div>
+            <div className={styles.priceCalculation}>Service fee<span className={styles.result}>${serviceFee}</span></div>
+            <div className={styles.totalCalculation}><b>Total</b><span className={styles.result}><b>${totalPrice}</b></span></div>
           </div>
 
           <div className={styles.bookingButton}>
