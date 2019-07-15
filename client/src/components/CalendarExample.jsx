@@ -21,16 +21,16 @@ class Calendar extends React.Component {
     const dateFormat = "MMMM YYYY";
 
     return (
-      <div className={[styles.header, styles.row, styles.flexMiddle]}>
-        <div className={[styles.col, styles.colStart]}>
+      <div className={[styles.header, styles.row, styles.flexMiddle].join(' ')}>
+        <div className={[styles.col, styles.colStart].join(' ')}>
           <div className={styles.icon} onClick={this.prevMonth}>
             chevron_left
           </div>
         </div>
-        <div className={[styles.col, styles.col-center]}>
+        <div className={[styles.col, styles.colCenter].join(' ')}>
           <span>{dateFns.format(this.state.currentMonth, dateFormat)}</span>
         </div>
-        <div className="col col-end" onClick={this.nextMonth}>
+        <div className={[styles.col, styles.colEnd].join(' ')} onClick={this.nextMonth}>
           <div className={styles.icon}>chevron_right</div>
         </div>
       </div>
@@ -45,13 +45,13 @@ class Calendar extends React.Component {
 
     for (let i = 0; i < 7; i++) {
       days.push(
-        <div className={[styles.col, styles.col-center]} key={i}>
+        <div className={[styles.col, styles.colCenter].join(' ')} key={i}>
           {dateFns.format(dateFns.addDays(startDate, i), dateFormat)}
         </div>
       );
     }
 
-    return <div className="days row">{days}</div>;
+    return <div className={[styles.days, styles.row].join(' ')}>{days}</div>;
   }
 
   renderCells() {
@@ -81,29 +81,29 @@ class Calendar extends React.Component {
         }
         days.push(
           <div
-            className={`col cell ${
-              //here i also need to check if this date is booked. Tile should be disabled if it is
-              (!dateFns.isSameMonth(day, monthStart) ||  taken === true)
-                ? "disabled"
-                : dateFns.isSameDay(day, selectedDate) ? "selected" : ""
-            }`}
+            // className={`col cell ${
+            //   (!dateFns.isSameMonth(day, monthStart) ||  taken === true)
+            //     ? "disabled"
+            //     : dateFns.isSameDay(day, selectedDate) ? "selected" : ""
+            // }`}
+            className={(!dateFns.isSameMonth(day, monthStart) || taken === true) ? [styles.col, styles.cell, styles.disabled].join(' ') : dateFns.isSameDay(day, selectedDate) ? [styles.col, styles.cell, styles.selected].join(' ') : [styles.col, styles.cell].join(' ')}
             key={day}
             onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
           >
-            <span className="number">{formattedDate}</span>
-            <span className="bg">{formattedDate}</span>
+            <span className={styles.number}>{formattedDate}</span>
+            <span className={styles.bg}>{formattedDate}</span>
           </div>
         );
         day = dateFns.addDays(day, 1);
       }
       rows.push(
-        <div className="row" key={day}>
+        <div className={styles.row} key={day}>
           {days}
         </div>
       );
       days = [];
     }
-    return <div className="body">{rows}</div>;
+    return <div className={styles.body}>{rows}</div>;
   }
 
   onDateClick(day) {
@@ -155,7 +155,7 @@ class Calendar extends React.Component {
 
   render() {
     return (
-      <div className="calendar">
+      <div className={styles.calendar}>
         {this.renderHeader()}
         {this.renderDays()}
         {this.renderCells()}
