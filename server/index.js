@@ -16,5 +16,5 @@ app.get('/bookings', (req, res) => {
   Bookings.find((err, docs) => res.send(docs[0]));
 });
 
-app.listen(3000, () => {
+app.listen(3001, () => {
 });
