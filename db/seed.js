@@ -2,6 +2,7 @@ const db  = require('./index.js');
 const Booking = require('./bookings.js');
 const faker = require('faker');
 const dateFns = require('date-fns');
+const mongoose = require('mongoose');
 
 const dateFormat = 'dddd YYYY MMMM';
 const date = faker.date.between('2019-07-11', '2019-07-11');
@@ -42,7 +43,9 @@ const samplePosts = [
 
 const insertSampleBookings = function() {
   Booking.create(samplePosts)
-    .then(() => db.disconnect());
+    .then(() => mongoose.disconnect());
 };
 
 insertSampleBookings();
+
+// mongoose.disconnect();
