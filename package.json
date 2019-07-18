@@ -9,7 +9,10 @@
   },
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "start": "nodemon server/index.js",
+    "seed": "node db/seed.js",
+    "start:docker": "npm run seed && npm start"
   },
   "jest": {
     "setupFilesAfterEnv": [
