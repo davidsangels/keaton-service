@@ -109,13 +109,14 @@ class Guest extends React.Component {
   render() {
     const guests = this.state.adults + this.state.children;
     const infants = this.state.infants;
+    const { maxGuests }= this.props;
     return (
       <div className={styles.guestContainer}>
         {this.renderAdults()}
         {this.renderChildren()}
         {this.renderInfants()}
         <div className={styles.bottomMessage}>
-          5 guests maximum. Infants don't count toward the number of guests.
+          {maxGuests} guests maximum. Infants don't count toward the number of guests.
         </div>
         <div onClick={() => this.props.onGuestSelectionDoneNoDates(guests, infants)} className={styles.closeGuestBox}>
           Close
