@@ -36,7 +36,8 @@ class Box extends React.Component {
   }
 
   componentDidMount() {
-    this.getServerData();
+    const pathway = window.location.pathname.split('/')[1];
+    this.getServerData(pathway);
   }
 
   adultsDecrement() {
@@ -122,8 +123,8 @@ class Box extends React.Component {
   }
 
 
-  getServerData() {
-    axios.get('/bookings')
+  getServerData(pathway) {
+    axios.get('/bookings/' + pathway)
       .then((response) => {
         const {
           price,
@@ -231,6 +232,7 @@ class Box extends React.Component {
         </div>
       )
     } else if (this.state.view === 'firstDateSelection') {
+      const { takenDates } = this.state;
       return (
         <div className={styles.box}>
           <div className={styles.price}>
@@ -244,10 +246,11 @@ class Box extends React.Component {
 
 
           <div className={styles.datesText}>Select Checkin Date</div>
-          <Calendar firstDateSelection={this.firstDateSelection}/>
+          <Calendar takenDates={takenDates} firstDateSelection={this.firstDateSelection}/>
           </div>
       )
     } else if (this.state.view === 'secondDateSelection') {
+      const { maxBooking, minBooking, takenDates } = this.state;
       return (
         <div className={styles.box}>
           <div className={styles.price}>
@@ -261,7 +264,7 @@ class Box extends React.Component {
 
 
           <div className={styles.datesText}>Select Checkout date</div>
-          <SecondCalendar date={this.state.firstDate} secondDateSelection={this.secondDateSelection}/>
+          <SecondCalendar takenDates={takenDates} maxBooking={maxBooking} minBooking={minBooking} date={this.state.firstDate} secondDateSelection={this.secondDateSelection}/>
           </div>
       )
     } else if (this.state.view === 'datesSelected') {

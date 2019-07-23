@@ -61,7 +61,8 @@ class SecondCalendar extends React.Component {
   }
 
   renderCells() {
-    const { currentMonth, selectedDate, takenDates, minBooking, maxBooking } = this.state;
+    const { currentMonth, selectedDate} = this.state;
+    const { takenDates, minBooking, maxBooking } = this.props;
     const monthStart = dateFns.startOfMonth(currentMonth);
     const monthEnd = dateFns.endOfMonth(monthStart);
     const startDate = dateFns.startOfWeek(monthStart);
@@ -162,7 +163,8 @@ class SecondCalendar extends React.Component {
   };
 
   findNextBooking() {
-    const { selectedDate, takenDates } = this.state;
+    const { selectedDate} = this.state;
+    const { takenDates } = this.props
     // console.log(selectedDate);
     // console.log(dateFns.addDays(selectedDate, 1))
 
@@ -184,8 +186,8 @@ class SecondCalendar extends React.Component {
     }
   }
 
-  getServerData() {
-    axios.get('/bookings')
+  getServerData(pathway) {
+    axios.get('/bookings' + pathway)
     .then((response) => {
       let { price, serviceFee, reviewScore, reviewAmount, maxGuests, maxAdults, maxChildren, maxInfants, minBooking, maxBooking, reservations } = response.data;
 
@@ -209,7 +211,9 @@ class SecondCalendar extends React.Component {
   }
 
   componentDidMount() {
-    this.getServerData();
+    const pathway = window.location.pathname.split('/')[1]
+    console.log(pathway);
+    this.getServerData(pathway);
     this.findNextBooking();
   }
 
